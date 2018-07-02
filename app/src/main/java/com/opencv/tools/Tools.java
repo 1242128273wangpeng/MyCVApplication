@@ -22,6 +22,8 @@ public class Tools {
 
     public static native int[] ImageBlur(int[] pixels, int w, int h);
 
+    public static native int[] ImageCanny(int[] pixels, int w, int h);
+
     public static native void changeValue();
 
     public native void changeValue2();

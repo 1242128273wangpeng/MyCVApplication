@@ -36,13 +36,24 @@ public class MainActivity extends AppCompatActivity {
         Log.i("main", "COUNT after:" + tools.COUNT);
         Log.i("main", "randomNumber call:" + tools.callRandomNumber());
         Log.i("main", "getUUID call:" + Tools.callStaticUUID());
-//        Log.i("main", "printMat call:" + tools.printMat(new Mat()).toString());
         Log.i("main","mat:"+new Mat().toString());
+        Log.i("main", "printMat call:" + tools.printMat(new Mat()).toString());
     }
 
     public void loadOrigin(View view) {
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.b);
         imageView.setImageBitmap(bitmap);
+    }
+
+    public Bitmap doCanny(Bitmap bitmap) {
+        int w = bitmap.getWidth();
+        int h = bitmap.getHeight();
+        int[] pixels = new int[w * h];
+        bitmap.getPixels(pixels, 0, w, 0, 0, w, h);
+        int images[] = Tools.ImageCanny(pixels, w, h);
+        Bitmap desBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.RGB_565);
+        desBitmap.setPixels(images, 0, w, 0, 0, w, h);
+        return desBitmap;
     }
 
     public Bitmap doBlur(Bitmap bitmap) {
@@ -58,5 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadBlur(View view) {
         imageView.setImageBitmap(doBlur(bitmap));
+    }
+
+    public void loadCanny(View view) {
+        imageView.setImageBitmap(doCanny(bitmap));
     }
 }

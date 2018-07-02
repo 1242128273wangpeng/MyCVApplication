@@ -9,12 +9,11 @@ import java.util.Arrays;
 public class Mat {
     public Mat() {
         super();
-        pixels = new int[w * h];
     }
 
-    public int[] pixels;
-    public int w = 1;
-    public int h = 1;
+    public int[] pixels = new int[30];
+    public int w = 3;
+    public int h = 6;
 
     @Override
     public String toString() {
